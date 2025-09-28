@@ -1,6 +1,5 @@
 package stella.salle.scasillasloginapp.ui.theme
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,7 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -22,11 +20,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import stella.salle.scasillasloginapp.R
 
-
 @Composable
 fun LoginScreen() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
 
     Box(
         modifier = Modifier
@@ -52,11 +50,8 @@ fun LoginScreen() {
                 .padding(horizontal = 28.dp, vertical = 40.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
-        )
-
-        {
-
-            Spacer(modifier = Modifier.height(20.dp))
+        ) {
+            Spacer(modifier = Modifier.height(60.dp))
 
             Text(
                 text = "Login",
@@ -65,7 +60,7 @@ fun LoginScreen() {
                 color = Color.Black,
                 modifier = Modifier.padding(bottom = 24.dp)
             )
-
+            Spacer(modifier = Modifier.height(40.dp))
             TextField(
                 value = email,
                 onValueChange = { email = it },
@@ -84,7 +79,7 @@ fun LoginScreen() {
                     disabledIndicatorColor = Color.Transparent
                 )
             )
-
+            Spacer(modifier = Modifier.height(20.dp))
             TextField(
                 value = password,
                 onValueChange = { password = it },
@@ -104,7 +99,7 @@ fun LoginScreen() {
                     disabledIndicatorColor = Color.Transparent
                 )
             )
-
+            Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = { /* TODO */ },
                 modifier = Modifier
@@ -112,23 +107,49 @@ fun LoginScreen() {
                     .padding(vertical = 16.dp)
                     .height(52.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(
+                    topStart = 15.dp,
+                    bottomStart = 15.dp,
+                    bottomEnd = 15.dp,
+                    topEnd = 0.dp
+                )
             ) {
                 Text("Login", color = Color.White, fontSize = 16.sp)
             }
-
+            Spacer(modifier = Modifier.height(100.dp))
             Text(
                 text = "Don’t have any account? Sign Up",
                 fontSize = 14.sp,
-                color = Color.Gray,
+                color = Color.Black,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(top = 12.dp)
             )
         }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.TopCenter
+        ) {
+            Box(
+                modifier = Modifier
+                    .offset(y = 60.dp)
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 0.dp, bottomEnd = 20.dp, bottomStart = 20.dp))
+                    .background(Color.White),
+
+                contentAlignment = Alignment.Center
+
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.icon),
+                    contentDescription = "App Icon",
+                    modifier = Modifier.size(60.dp)
+                )
+            }
+        }
     }
 }
-
-
 
 @Preview(showSystemUi = true)
 @Composable

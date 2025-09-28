@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             SCasillasLoginAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Andsdroid",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
